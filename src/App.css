@@ -32,3 +32,6 @@
   margin-right: 10px;
   padding: 5px;
 }
+.selected-day {
+  background-color: #b3e5fc;
+}
