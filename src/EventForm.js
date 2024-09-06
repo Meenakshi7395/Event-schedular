@@ -3,15 +3,17 @@ import React, { useState } from 'react';
 function EventForm({ addEvent }) {
   const [title, setTitle] = useState('');
   const [date, setDate] = useState('');
-  const [time, setTime] = useState('');
+  const [startTime, setStartTime] = useState('');
+  const [endTime, setEndTime] = useState('');
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const newEvent = { title, date, time };
+    const newEvent = { title, date, startTime, endTime };
     addEvent(newEvent);
     setTitle('');
     setDate('');
-    setTime('');
+    setStartTime('');
+    setEndTime('');
   };
 
   return (
@@ -31,10 +33,16 @@ function EventForm({ addEvent }) {
       />
       <input
         type="time"
-        value={time}
-        onChange={(e) => setTime(e.target.value)}
+        value={startTime}
+        onChange={(e) => setStartTime(e.target.value)}
         required
       />
+      <input
+      type="time"
+      value={endTime}
+      onChange={(e) => setEndTime(e.target.value)}
+      required
+    />
       <button type="submit">Add Event</button>
     </form>
   );

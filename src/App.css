@@ -10,12 +10,12 @@
   margin-top: 20px;
 }
 
-.day {
+/* .day {
   border: 1px solid #ccc;
   padding: 10px;
   background-color: #f9f9f9;
   min-height: 100px;
-}
+} */
 
 .event {
   margin-top: 5px;
@@ -34,4 +34,13 @@
 }
 .selected-day {
   background-color: #b3e5fc;
+}
+
+.day
+{
+  height: 720px;
+  border: 1px solid #ccc;
+  padding: 10px;
+  background-color: #f9f9f9;
+  /* min-height: 100px; */
 }

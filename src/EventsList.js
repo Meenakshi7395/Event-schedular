@@ -9,7 +9,7 @@ function EventsList({ events }) {
     <ul>
       {events.map((event, index) => (
         <li key={index}>
-          <strong>{event.time}</strong>: {event.title}
+          <strong>Start Time {event.startTime}</strong>: {event.title}
         </li>
       ))}
     </ul>
