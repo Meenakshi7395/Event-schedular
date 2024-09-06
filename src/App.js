@@ -1,12 +1,20 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Calendar from './Calendar';
 import EventForm from './EventForm';
-import EventsList from './EventsList';
+import EventsList from './EventsList.js';
 import './App.css';
 
 function App() {
   const [events, setEvents] = useState([]);
   const [selectedDay, setSelectedDay] = useState(null);
+
+  useEffect(() => {
+    // Fetch events from the backend
+    fetch('http://localhost:3001/events')
+      .then(response => response.json())
+      .then(data => setEvents(data))
+      .catch(error => console.error('Error fetching events:', error));
+  }, []);
 
   const addEvent = (event) => {
     setEvents([...events, event]);
@@ -19,6 +27,8 @@ function App() {
   const eventsForSelectedDay = events.filter(
     (event) => new Date(event.date).getDate() === selectedDay
   );
+
+
 
   return (
     <div className="App">
