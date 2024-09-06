@@ -1,6 +1,16 @@
 import React from 'react';
 
+// const[event,setevent]=useState({
+//   id: event.length + 1,
+//   title:'',
+//   description:'',
+//   date:'',
+//   startTime:'',
+//   endTime:'',
+// )};
+
 function Calendar({ events, onDayClick }) {
+  
   const renderEvents = (day) => {
     const dayEvents = events.filter(event => new Date(event.date).getDate() === day);
     return dayEvents.map((event, index) => (

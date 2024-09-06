@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Routes,Route } from 'react-router';
 import Calendar from './Calendar';
 import EventForm from './EventForm';
 import EventsList from './EventsList.js';
@@ -10,7 +11,7 @@ function App() {
 
   useEffect(() => {
     // Fetch events from the backend
-    fetch('http://localhost:3001/events')
+    fetch('http://localhost:3000/events')
       .then(response => response.json())
       .then(data => setEvents(data))
       .catch(error => console.error('Error fetching events:', error));
