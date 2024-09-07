@@ -21,17 +21,42 @@ function App() {
     )
     .then(response => response.json())
       .then(data => {
-        setEvents(data)
-        console.log('Success:', data);
+
+        if(data.success)
+        {
+          setEvents(data.events)
+        }
+       console.log('Success:',);
       }
         )
       .catch(error => console.error('Error fetching events:', error));
   }, []);
 
   const addEvent = (event) => {
-    setEvents([...events, event]);
+    //setEvents([...events, event]);
 
     // send to backend
+    fetch('http://localhost:3001/events',{
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body:JSON.stringify(event),
+    }
+
+    )
+    .then(response => response.json())
+      .then(data => {
+
+        if(data.success)
+        {
+          console.log('Success:',data);
+          setEvents([...events, data.newEvent]);
+        }
+      
+      }
+        )
+      .catch(error => console.error('Error fetching events:', error));
 
   };
 

@@ -11,13 +11,15 @@ function EventForm({ addEvent }) {
     e.preventDefault();
     const newEvent = { title, date, startTime, endTime };
 
-    if(!isConflicting)
-      addEvent(newEvent);
+    //if(!isConflicting)
+    addEvent(newEvent);
 
-    setTitle('');
-    setDate('');
-    setStartTime('');
-    setEndTime('');
+    // setTitle('');
+    // setDate('');
+    // setStartTime('');
+    // setEndTime('');
+
+    return false
   };
 
   function checkConflict()
@@ -28,10 +30,29 @@ function EventForm({ addEvent }) {
     {
       //console.log("yes")
 
-     var data = {date,startTime,endTime} 
-     console.log(data)
+     var toSendData = {"date":date,"startTime":startTime,"endTime":endTime} 
+     console.log(toSendData)
 
      //fetch()
+
+     fetch('http://localhost:3001/events/check-conflict',{
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body:JSON.stringify(toSendData),
+      }
+    )
+    .then(response => response.json())
+      .then(data => {
+
+       setIsConflicting(data.isConflicting)
+      
+      }
+        )
+      .catch(error => console.error('Error fetching events:', error));
+
+
     }
 
   }

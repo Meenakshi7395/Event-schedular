@@ -1,8 +1,11 @@
 const express = require('express');
 const app = express();
 const port = 3001;
+const cors = require('cors')
 
 app.use(express.json()); // For parsing JSON requests
+
+app.use(cors())
 
 // In-memory events array
 let events = [];
