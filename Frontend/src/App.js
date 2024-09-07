@@ -11,9 +11,20 @@ function App() {
 
   useEffect(() => {
     // Fetch events from the backend
-    fetch('http://localhost:3001/events')
-      .then(response => response.json())
-      .then(data => setEvents(data))
+    fetch('http://localhost:3001/events',{
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      }
+    }
+
+    )
+    .then(response => response.json())
+      .then(data => {
+        setEvents(data)
+        console.log('Success:', data);
+      }
+        )
       .catch(error => console.error('Error fetching events:', error));
   }, []);
 
@@ -31,9 +42,7 @@ function App() {
   const eventsForSelectedDay = events.filter(
     (event) => new Date(event.date).getDate() === selectedDay
   );
-
-
-
+  
   return (
     <div className="App">
       <h1>Simple Calendar</h1>
