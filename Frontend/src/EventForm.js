@@ -11,13 +11,17 @@ function EventForm({ addEvent }) {
     e.preventDefault();
     const newEvent = { title, date, startTime, endTime };
 
-    //if(!isConflicting)
-    addEvent(newEvent);
+    if(!isConflicting)
+    {
+     addEvent(newEvent);
+    } 
 
-    // setTitle('');
-    // setDate('');
-    // setStartTime('');
-    // setEndTime('');
+    setTitle('');
+    setDate('null');
+    setStartTime('null');
+    setEndTime('null');
+    
+    setIsConflicting(false)
 
     return false
   };

@@ -51,7 +51,9 @@ function App() {
         if(data.success)
         {
           console.log('Success:',data);
+          alert("Event added successfully");
           setEvents([...events, data.newEvent]);
+         
         }
       
       }
