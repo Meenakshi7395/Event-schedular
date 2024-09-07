@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Routes,Route } from 'react-router';
-import Calendar from './Calendar';
-import EventForm from './EventForm';
+import Calendar from './Calendar.js';
+import EventForm from './EventForm.js';
 import EventsList from './EventsList.js';
 import './App.css';
 
